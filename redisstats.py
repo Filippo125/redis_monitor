@@ -12,11 +12,14 @@ class RedisStats:
         self.host     = kwargs.get("host","localhost")
         self.port     = kwargs.get("port",6379)
         self.password = kwargs.get("password",None)
+        self.simulate = kwargs.get("simulate",False)
 
     def _conn(self):
         return redis.Redis(host=self.host,port=self.port,password=self.password)
 
     def get_raw_stats(self):
+        if self.simulate:
+            return json.load(open("./redis.json","r"))
         conn = self._conn()
         return conn.info()
     def get_version(self):
@@ -26,10 +29,13 @@ class RedisStats:
 
     def _get_perf(self,raw_stats):
         performance = dict()
-        performance["fragment_ratio"]  = raw_stats["mem_fragment_ratio"]
+        performance["fragment_ratio"]  = raw_stats["mem_fragmentation_ratio"]
         hits   = raw_stats["keyspace_hits"]
         misses = raw_stats["keyspace_misses"]
-        performance["hit_rate"]   = hits/(hits+misses)
+        total  = hits + misses
+        if total > 0:
+            performance["hit_rate"]= hits/(hits+misses)
+        performance["hit_rate"]    = 0
         performance["ops_per_sec"] = raw_stats["instantaneous_ops_per_sec"]
         return performance
 
