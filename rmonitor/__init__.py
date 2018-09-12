@@ -11,6 +11,7 @@ class NotSupportedVersion(BaseException):
         self.message = "Server %s is not supported" % str(version)
 
 class RedisStats:
+    VERSION = "1.0"
     regex = r"db[0-9]+"
 
     def __init__(self, **kwargs):

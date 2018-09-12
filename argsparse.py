@@ -1,6 +1,5 @@
 from optparse import OptionParser
 
-
 def parse_cli():
     usageInfo = "usage: %prog [options]"
 

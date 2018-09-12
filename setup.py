@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from setuptools import setup
-from redis_monitor import __version__ as VERSION
+from redis_monitor import VERSION
 import distutils.command.install_scripts
 import shutil
 
