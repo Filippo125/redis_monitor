@@ -18,18 +18,16 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 setup(
     name = "redis_monitor",
-    version= "1.00",
+    version= "1.0",
     description= "Show the statistics about redis server",
     long_description = long_description,
     author = "Filippo Ferrazini",
     author_email = "filippo.ferrazini@gmail.com",
     url = "https://github.com/Filippo125/redis_monitor",
     license = "MIT",
-    packages = [
-        "redisstat",
-        ],
+    packages = [],
     install_requires=["redis"],
-    scripts = [ "main.py" ],
+    scripts = [ "redis_monitor.py" ],
     cmdclass = {
         "install_scripts" : strip_py_ext
     },
