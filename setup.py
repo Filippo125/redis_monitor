@@ -17,13 +17,13 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 
 setup(
-    name = "redisstats",
+    name = "redis_monitor",
     version= "1.00",
     description= "Show the statistics about redis server",
     long_description = long_description,
     author = "Filippo Ferrazini",
     author_email = "filippo.ferrazini@gmail.com",
-    url = "https://github.com/Filippo125/redisstats",
+    url = "https://github.com/Filippo125/redis_monitor",
     license = "MIT",
     packages = [
         "redisstat",
