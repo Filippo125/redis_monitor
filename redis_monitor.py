@@ -1,9 +1,8 @@
 from __future__ import print_function
-from rmonitor import RedisStats
-from argsparse import parse_cli
+from redis_monitor.redis_monitor import RedisStats
+from redis_monitor.argsparse import parse_cli
 import json
-from utils import seconds_to_human_readable, bytes_to_human_readable
-import monitor
+from redis_monitor.cli import monitor
 import time
 import sys
 

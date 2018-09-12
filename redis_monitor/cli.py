@@ -1,5 +1,5 @@
 import curses
-from utils import seconds_to_human_readable, bytes_to_human_readable
+from redis_monitor.utils import seconds_to_human_readable, bytes_to_human_readable
 import datetime
 
 def monitor_active():

@@ -8,6 +8,7 @@ f = open('README')
 long_description = f.read().strip()
 f.close()
 
+# idea from http://stackoverflow.com/a/11400431/2139420
 class strip_py_ext(distutils.command.install_scripts.install_scripts):
     def run(self):
         distutils.command.install_scripts.install_scripts.run(self)
@@ -25,7 +26,7 @@ setup(
     author_email = "filippo.ferrazini@gmail.com",
     url = "https://github.com/Filippo125/redis_monitor",
     license = "MIT",
-    packages = ["rmonitor"],
+    packages = ["redis_monitor"],
     install_requires=["redis"],
     scripts = [ "redis_monitor.py" ],
     cmdclass = {
