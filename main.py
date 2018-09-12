@@ -13,11 +13,13 @@ def json_output(r,options):
     elif options.mem:
         data = r.get_memory_stats()
     elif options.sys:
-        data = r.get_memory_stats()
+        data = r.get_system_stats()
     elif options.perf:
         data = r.get_performance_stats()
     elif options.conn:
         data = r.get_connection_stats()
+    elif options.dbinstance:
+        data = r.get_instance_stats(options.dbinstance)
     else:
         data = r.get_full_summary_stats()    
     if options.debug:
@@ -31,13 +33,13 @@ def console_output(r,options):
         data = r.get_full_summary_stats()
         screen = monitor.monitor_active()
         while monitor.monitor_watch(screen,data):
-            print("True",file=sys.stderr)
             data = r.get_full_summary_stats()
             time.sleep(options.watch)           
     except Exception as e:
         print(e)
     finally:
-        monitor.monitor_deactivate(screen)
+        if screen != None:
+            monitor.monitor_deactivate(screen)
 
 
 
@@ -45,8 +47,8 @@ if __name__ == "__main__":
     options,args = parse_cli()
     r = RedisStats(host=options.host,
                    port=options.port,
-                   password=options.pwd,
-                   simulate=options.debug)
+                   password=options.pwd,)
+#                   simulate=options.debug)
     if options.json:
         json_output(r,options)
     else:

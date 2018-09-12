@@ -24,10 +24,11 @@ setup(
     author = "Filippo Ferrazini",
     author_email = "filippo.ferrazini@gmail.com",
     url = "https://github.com/Filippo125/redisstats",
-    license = "GPLv3",
+    license = "MIT",
     packages = [
         "redisstat",
         ],
+    install_requires=["redis"],
     scripts = [ "main.py" ],
     cmdclass = {
         "install_scripts" : strip_py_ext
