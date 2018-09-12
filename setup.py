@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from setuptools import setup
-from . import __version__ as VERSION
+from redis_monitor import __version__ as VERSION
 import distutils.command.install_scripts
 import shutil
 
@@ -26,7 +26,7 @@ setup(
     author_email = "filippo.ferrazini@gmail.com",
     url = "https://github.com/Filippo125/redis_monitor",
     license = "MIT",
-    packages = [],
+    packages = ["rmonitor"],
     install_requires=["redis"],
     scripts = [ "redis_monitor.py" ],
     cmdclass = {
