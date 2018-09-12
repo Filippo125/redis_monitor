@@ -2,7 +2,7 @@ from __future__ import print_function
 from redis_monitor.redis_monitor import RedisStats
 from redis_monitor.argsparse import parse_cli
 import json
-from redis_monitor.cli import monitor
+import redis_monitor.cli as monitor
 import time
 import sys
 
