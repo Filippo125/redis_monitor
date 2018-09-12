@@ -1,6 +1,5 @@
 #!/usr/bin/python
 from setuptools import setup
-from redis_monitor import VERSION
 import distutils.command.install_scripts
 import shutil
 
@@ -19,7 +18,7 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 setup(
     name = "redis_monitor",
-    version= VERSION,
+    version= "1.0",
     description= "Show the statistics about redis server",
     long_description = long_description,
     author = "Filippo Ferrazini",
