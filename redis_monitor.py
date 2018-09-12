@@ -1,5 +1,5 @@
 from __future__ import print_function
-from redisstats import RedisStats
+from module import RedisStats
 from argsparse import parse_cli
 import json
 from utils import seconds_to_human_readable, bytes_to_human_readable
