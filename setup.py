@@ -32,5 +32,6 @@ setup(
     scripts = [ "main.py" ],
     cmdclass = {
         "install_scripts" : strip_py_ext
-    }
+    },
+    keywords='monitoring redis',
 )
