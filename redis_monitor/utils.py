@@ -8,7 +8,8 @@ intervals = (
 
 def seconds_to_human_readable(seconds):
     result = []
-
+    if seconds == 0:
+        return "0"
     for name, count in intervals:
         value = seconds // count
         if value:

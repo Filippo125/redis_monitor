@@ -21,7 +21,7 @@ class RedisStats:
         self.host     = kwargs.get("host","localhost")
         self.port     = kwargs.get("port",6379)
         self.password = kwargs.get("password",None)
-        self.simulate = kwargs.get("simulate",False)
+        self.simulate = kwargs.get("simulate",None)
 
     def _conn(self):
         return redis.Redis(host=self.host,port=self.port,password=self.password)
@@ -40,9 +40,10 @@ class RedisStats:
 
     def get_raw_stats(self):
         if self.simulate:
-            return json.load(open("./redis.json","r"))
+            return json.load(open(self.simulate,"r"))
         conn = self._conn()
         return conn.info()
+
     def get_version(self):
         return self.get_raw_stats()["redis_version"]
     def get_uptime(self):
