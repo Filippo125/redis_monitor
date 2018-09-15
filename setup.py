@@ -19,7 +19,7 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 setup(
     name = "redis_monitor",
-    version= "1.1",
+    version= "1.2",
     description= "Show the statistics about redis server",
     long_description = long_description,
     author = "Filippo Ferrazini",
