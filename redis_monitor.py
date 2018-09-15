@@ -18,7 +18,10 @@ def json_output(r,options):
     elif options.conn:
         data = r.get_connection_stats()
     elif options.dbinstance:
-        data = r.get_instance_stats(options.dbinstance)
+        if options.dbinstance == "SENT":
+            data = r.get_instances_summary_stats()
+        else:
+            data = r.get_instance_stats(options.dbinstance)
     else:
         data = r.get_full_summary_stats()    
     if options.debug:
@@ -43,7 +46,7 @@ def console_output(r,options):
 
 
 if __name__ == "__main__":
-    options,args = parse_cli()
+    options = parse_cli()
     r = RedisStats(host=options.host,
                    port=options.port,
                    password=options.pwd,)

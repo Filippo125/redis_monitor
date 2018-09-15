@@ -95,6 +95,7 @@ class RedisStats:
         i["total_expires"] = 0
         i["avg_ttl"] = 0
         i["total_instances"] = len(dbis)
+        i["instaces"] = dbis
         for dbi in dbis:
             i["total_keys"]  +=  raw_stats[dbi]["keys"]
             i["total_expires"] += raw_stats[dbi]["expires"]
@@ -138,3 +139,7 @@ class RedisStats:
             return [self._get_instance(raw_stats=raw[x],instance=x) for x in dbi]
         else:
             return [self._get_instance(raw_stats=raw[instance],instance=instance)]
+
+    def get_instances_summary_stats(self):
+        raw = self.get_raw_stats()
+        return self._get_sum_instance(raw)
