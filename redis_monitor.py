@@ -6,7 +6,8 @@ import redis_monitor.cli as monitor
 import time
 import sys
 
-def json_output(r,options):
+
+def json_output(r, options):
     if options.raw:
         data = r.get_raw_stats()
     elif options.mem:
@@ -23,35 +24,35 @@ def json_output(r,options):
         else:
             data = r.get_instance_stats(options.dbinstance)
     else:
-        data = r.get_full_summary_stats()    
+        data = r.get_full_summary_stats()
+    # if debug change json output format
     if options.debug:
-        print(json.dumps(data,indent=2))
+        print(json.dumps(data, indent=2))
     else:
         print(json.dumps(data))
 
-def console_output(r,options):
+
+def console_output(r, options):
     screen = None
     try:
         data = r.get_full_summary_stats()
         screen = monitor.monitor_active()
-        while monitor.monitor_watch(screen,data):
+        while monitor.monitor_watch(screen, data):
             data = r.get_full_summary_stats()
-            time.sleep(options.watch)           
+            time.sleep(options.watch)
     except Exception as e:
         print(e)
     finally:
-        if screen != None:
+        if screen is not None:
             monitor.monitor_deactivate(screen)
-
 
 
 if __name__ == "__main__":
     options = parse_cli()
     r = RedisStats(host=options.host,
                    port=options.port,
-                   password=options.pwd,)
-#                   simulate=options.debug)
+                   password=options.pwd)
     if options.json:
-        json_output(r,options)
+        json_output(r, options)
     else:
-        console_output(r,options)
+        console_output(r, options)

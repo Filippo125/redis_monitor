@@ -4,10 +4,6 @@ import distutils.command.install_scripts
 import shutil
 
 
-f = open('README')
-long_description = f.read().strip()
-f.close()
-
 # idea from http://stackoverflow.com/a/11400431/2139420
 class strip_py_ext(distutils.command.install_scripts.install_scripts):
     def run(self):
@@ -18,19 +14,17 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 
 setup(
-    name = "redis_monitor",
-    version= "1.2",
-    description= "Show the statistics about redis server",
-    long_description = long_description,
-    author = "Filippo Ferrazini",
-    author_email = "filippo.ferrazini@gmail.com",
-    url = "https://github.com/Filippo125/redis_monitor",
-    license = "MIT",
-    packages = ["redis_monitor"],
+    name="redis_monitor",
+    version="1.2",
+    description="Show the statistics about redis server",
+    long_description="Show the statistics about redis server",
+    author="Filippo Ferrazini",
+    author_email="filippo.ferrazini@gmail.com",
+    url="https://github.com/Filippo125/redis_monitor",
+    license="MIT",
+    packages=["redis_monitor"],
     install_requires=["redis"],
-    scripts = [ "redis_monitor.py" ],
-    cmdclass = {
-        "install_scripts" : strip_py_ext
-    },
-    keywords='monitoring redis',
+    scripts=["redis_monitor.py"],
+    cmdclass={"install_scripts": strip_py_ext},
+    keywords="monitoring redis",
 )

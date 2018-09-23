@@ -3,8 +3,9 @@ intervals = (
     ('days', 86400),    # 60 * 60 * 24
     ('hours', 3600),    # 60 * 60
     ('minutes', 60),    # 60 * 1
-    ('seconds', 1),
-    )
+    ('seconds', 1))
+suffixes = ['B', 'kB', 'MB', 'GB', 'TB', 'PB']
+
 
 def seconds_to_human_readable(seconds):
     result = []
@@ -20,10 +21,9 @@ def seconds_to_human_readable(seconds):
     return ', '.join(result)
 
 
-suffixes = ['B', 'kB', 'MB', 'GB', 'TB', 'PB']
 def bytes_to_human_readable(nb):
     i = 0
-    while nb >= 1024 and i < len(suffixes)-1:
+    while nb >= 1024 and (i + 1) < len(suffixes):
         nb /= 1024.
         i += 1
     f = ('%.2f' % nb).rstrip('0').rstrip('.')
