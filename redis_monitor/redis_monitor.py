@@ -41,7 +41,7 @@ class RedisStats:
         return dbi
 
     @staticmethod
-    def _get_perf(self, raw_stats):
+    def _get_perf(raw_stats):
         performance = dict()
         performance["fragment_ratio"] = raw_stats["mem_fragmentation_ratio"]
         performance["hit_rate"] = 0
@@ -54,14 +54,14 @@ class RedisStats:
         return performance
 
     @staticmethod
-    def _get_conn(self, raw_stats):
+    def _get_conn(raw_stats):
         connection = dict()
         connection["connected"] = raw_stats["connected_clients"]
         connection["blocked"]   = raw_stats["blocked_clients"]
         return connection
 
     @staticmethod
-    def _get_sys(self, raw_stats):
+    def _get_sys(raw_stats):
         sys = dict()
         sys["cpu_sys"]  = raw_stats["used_cpu_sys"]
         sys["cpu_user"] = raw_stats["used_cpu_user"]
@@ -69,7 +69,7 @@ class RedisStats:
         return sys
 
     @staticmethod
-    def _get_memory(self, raw_stats):
+    def _get_memory(raw_stats):
         memory = dict()
         memory["used"]  = raw_stats["used_memory"]
         memory["rss"]   = raw_stats["used_memory_rss"]
@@ -79,7 +79,7 @@ class RedisStats:
         return memory
 
     @staticmethod
-    def _get_instance(self, raw_stats, instance):
+    def _get_instance(raw_stats, instance):
         i = dict()
         i["keys"]    = raw_stats["keys"]
         i["expires"] = raw_stats["expires"]
@@ -88,7 +88,7 @@ class RedisStats:
         return i
 
     @staticmethod
-    def _get_sum_instance(self, raw_stats):
+    def _get_sum_instance(raw_stats):
         i = dict()
         dbis = RedisStats._db_instance(raw_stats.keys())
         i["total_keys"] = 0
