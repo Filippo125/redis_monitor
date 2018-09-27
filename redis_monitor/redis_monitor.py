@@ -74,8 +74,9 @@ class RedisStats:
         memory["used"]  = raw_stats["used_memory"]
         memory["rss"]   = raw_stats["used_memory_rss"]
         memory["peak"]  = raw_stats["used_memory_peak"]
-        memory["total"] = raw_stats["total_system_memory"]
-        memory["max"]   = raw_stats["maxmemory"]
+        if RedisStats._is_compatible(raw_stats["redis_version"]):
+            memory["total"] = raw_stats["total_system_memory"]
+            memory["max"]   = raw_stats["maxmemory"]
         return memory
 
     @staticmethod
@@ -126,8 +127,6 @@ class RedisStats:
     def get_memory_stats(self):
         raw = self.get_raw_stats()
         version = raw["redis_version"]
-        if not self._is_compatible(version):
-            raise NotSupportedVersion(version=version)
         return self._get_memory(raw_stats=raw)
 
     def get_connection_stats(self):
@@ -141,7 +140,7 @@ class RedisStats:
         sys         = self._get_sys(raw_stats=raw)
         memory      = self._get_memory(raw_stats=raw)
         instances   = self._get_sum_instance(raw_stats=raw)
-        return dict(connection=connection, sys=sys, memory={}, performance=performance, dbi=instances)
+        return dict(connection=connection, sys=sys, memory=memory, performance=performance, dbi=instances)
 
     def get_instance_stats(self, instance=None):
         raw = self.get_raw_stats()
