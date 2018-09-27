@@ -25,11 +25,20 @@ need the .py extension.
 
 
 ## Running the tests
-Use tox
+To do test use tox, coverage and pytest.<br>
+
+### Test
+Run tox, it build a python3.7 virtual environment,install dependencies and execute pytest 
+### Coverage
+Coming soon....
 
 ### And coding style tests
 
-All source code try to handle PEP8 with little change. To verify compliance with specifications use pycodestyle package.
+All source code try to handle PEP8 with little change:<br>
+1. the max line length is increase up to 160 characters
+2. ignore E221 (multiple spaces before operator)<br>
+
+To verify compliance with specifications use pycodestyle package.
 The pycodestyle configuration is:
 ```
 [pycodestyle]
