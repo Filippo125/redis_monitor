@@ -5,6 +5,8 @@
 *~
 *.egg-info
 .idea/*
-__pycache__/
+__pycache__
 build
 dist
+.tox
+.pytest_cache

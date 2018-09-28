@@ -1,0 +1,4 @@
+pycobertura
+tox
+coverage
+pytest-cov
