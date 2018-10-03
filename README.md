@@ -1,4 +1,6 @@
-# Redis Monitor
+# Redis Monitor 
+[![Build Status](https://travis-ci.org/Filippo125/redis_monitor.svg?branch=devel)](https://travis-ci.org/Filippo125/redis_monitor)
+
 This project is a simple utility to monitoring a redis server
 
 ## Getting Started
