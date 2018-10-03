@@ -3,6 +3,9 @@ from setuptools import setup
 import distutils.command.install_scripts
 import shutil
 
+import sys
+if sys.version_info < (2,7):
+    sys.exit('Sorry, Python < 2.7 is not supported')
 
 # idea from http://stackoverflow.com/a/11400431/2139420
 class strip_py_ext(distutils.command.install_scripts.install_scripts):
