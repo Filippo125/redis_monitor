@@ -18,6 +18,8 @@ def json_output(r, options):
         data = r.get_performance_stats()
     elif options.conn:
         data = r.get_connection_stats()
+    elif options.dbinl:
+        data = r.get_instances_summary_stats()["instances"]
     elif options.dbinstance:
         if options.dbinstance == "SENT":
             data = r.get_instances_summary_stats()

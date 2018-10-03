@@ -96,7 +96,7 @@ class RedisStats:
         i["total_expires"] = 0
         i["avg_ttl"] = 0
         i["total_instances"] = len(dbis)
-        i["instaces"] = dbis
+        i["instances"] = dbis
         for dbi in dbis:
             i["total_keys"]  += raw_stats[dbi]["keys"]
             i["total_expires"] += raw_stats[dbi]["expires"]

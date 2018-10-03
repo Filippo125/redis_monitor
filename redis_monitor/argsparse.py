@@ -14,6 +14,7 @@ def parse_cli():
     parser.add_argument("-s", "--system", dest="sys", action="store_true", help="show system statistics")
     parser.add_argument("-p", "--performance", dest="perf", action="store_true", help="show performance statistics")
     parser.add_argument("-i", "--dbinstance", dest="dbinstance", nargs='?', const="SENT", help="show instance")
+    parser.add_argument("-il", "--dbinstancelist", dest="dbinl", action="store_true", help="show instance name list")
     parser.add_argument("-c", "--connection", dest="conn", action="store_true", help="show connection statistics")
     ##########################################################################
     output_group.add_argument("-j", "--json", dest="json", action="store_true", help="output in json format", default=False)

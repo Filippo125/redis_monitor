@@ -4,8 +4,9 @@ import distutils.command.install_scripts
 import shutil
 
 import sys
-if sys.version_info < (2,7):
-    sys.exit('Sorry, Python < 2.7 is not supported')
+
+if sys.version_info < (3,4):
+    sys.exit('Sorry, Python2  is not supported')
 
 # idea from http://stackoverflow.com/a/11400431/2139420
 class strip_py_ext(distutils.command.install_scripts.install_scripts):
@@ -18,7 +19,7 @@ class strip_py_ext(distutils.command.install_scripts.install_scripts):
 
 setup(
     name="redis_monitor",
-    version="1.2",
+    version="1.2.1",
     description="Show the statistics about redis server",
     long_description="Show the statistics about redis server",
     author="Filippo Ferrazini",
@@ -30,4 +31,5 @@ setup(
     scripts=["redis_monitor.py"],
     cmdclass={"install_scripts": strip_py_ext},
     keywords="monitoring redis",
+    python_requires='>=3.4'
 )
